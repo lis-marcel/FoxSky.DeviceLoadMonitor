@@ -1,14 +1,15 @@
 ﻿using FoxSky.DeviceLoadMonitor.Master.Service;
+using System.Threading.Tasks;
 
 namespace FoxSky.DeviceLoadMonitor.Master
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            var cpuService = new CpuDataProvider();
+            MasterService masterService = new();
 
-            cpuService.GetCpuUsage();
+            await masterService.Run();
         }
     }
 }
