@@ -13,16 +13,14 @@ namespace FoxSky.DeviceLoadMonitor.Master.Service
             _cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
         }
 
-        public void GetCpuUsage()
+        public string GetCpuUsage()
         {
             _cpuCounter.NextValue().ToString();
 
             // Wait a second to get a valid reading
             System.Threading.Thread.Sleep(1000);
 
-            float cpuUsage = MathF.Round(_cpuCounter.NextValue(), 0);
-
-            Console.WriteLine($"Current CPU Usage: {cpuUsage}%");
+            return MathF.Round(_cpuCounter.NextValue(), 0).ToString();
         }
     }
 }

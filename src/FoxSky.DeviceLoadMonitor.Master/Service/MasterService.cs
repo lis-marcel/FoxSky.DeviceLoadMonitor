@@ -20,7 +20,9 @@ namespace FoxSky.DeviceLoadMonitor.Master.Service
         {
             while (await _timer.WaitForNextTickAsync())
             {
-                _cpuDataProvider.GetCpuUsage();
+                string value = _cpuDataProvider.GetCpuUsage();
+
+                _serialWriter.WriteData(value);
             }
         }
     }
