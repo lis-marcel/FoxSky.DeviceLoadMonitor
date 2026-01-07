@@ -1,12 +1,34 @@
 #include <Arduino.h>
 
+#define DAC_PIN 25 
+
+String incomingString; 
+int cpuLoad = 0;
+int dacValue = 0;
+
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT); // Initialize the LED pin as an output
+  Serial.begin(9600); 
+  
+  Serial.setTimeout(50); 
 }
 
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);                       // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);                       // wait for a second
+  if (Serial.available() > 0) {
+    
+    incomingString = Serial.readStringUntil('\n');
+
+    cpuLoad = incomingString.toInt();
+
+    cpuLoad = constrain(cpuLoad, 0, 100);
+
+    dacValue = map(cpuLoad, 0, 100, 0, 255);
+
+    dacWrite(DAC_PIN, dacValue);
+    
+    // Debugging: Print back to Serial Monitor to verify (Optional)
+    // Serial.print("CPU: ");
+    // Serial.print(cpuLoad);
+    // Serial.print("% -> DAC: ");
+    // Serial.println(dacValue);
+  }
 }
