@@ -3,8 +3,8 @@
 #define DAC_PIN 25 
 
 String incomingString; 
-int cpuLoad = 0;
-int dacValue = 0;
+long cpuLoad = 0;
+long dacValue = 0;
 
 void setup() {
   Serial.begin(9600); 
@@ -23,10 +23,12 @@ void loop() {
 
     dacValue = map(cpuLoad, 0, 100, 0, 255);
 
-    dacWrite(DAC_PIN, dacValue);
+    analogWrite(DAC_PIN, dacValue);
     
-    // Debugging: Print back to Serial Monitor to verify (Optional)
-    // Serial.print("CPU: ");
+    // Odsyłanie logów z powrotem do PC
+    // Serial.print("Odebrano: '");
+    // Serial.print(incomingString);
+    // Serial.print("' -> CPU: ");
     // Serial.print(cpuLoad);
     // Serial.print("% -> DAC: ");
     // Serial.println(dacValue);
