@@ -6,12 +6,16 @@ namespace FoxSky.DeviceLoadMonitor.Master.Service
     {
         private readonly PeriodicTimer _timer;
         private readonly CpuDataProvider _cpuDataProvider;
+        private readonly RamDataProvider _ramDataProvider;
         private readonly SerialWriter _serialWriter;
 
         public MasterService() 
         {
             _timer = new(TimeSpan.FromSeconds(5));
+
             _cpuDataProvider = new CpuDataProvider();
+            _ramDataProvider = new RamDataProvider();
+
             _serialWriter = new SerialWriter();
         }
 
@@ -19,7 +23,8 @@ namespace FoxSky.DeviceLoadMonitor.Master.Service
         {
             while (await _timer.WaitForNextTickAsync())
             {
-                string value = _cpuDataProvider.GetCpuUsage();
+                //string value = _cpuDataProvider.GetCpuUsage();
+                string value = _ramDataProvider.GetRamUsage();
 
                 _serialWriter.WriteData(value);
             }
