@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using FoxSky.DeviceLoadMonitor.Master.Service.DataProviders;
 
 namespace FoxSky.DeviceLoadMonitor.Master.Service
 {

@@ -2,7 +2,7 @@
 
 #pragma warning disable CA1416 // Validate platform compatibility
 
-namespace FoxSky.DeviceLoadMonitor.Master.Service
+namespace FoxSky.DeviceLoadMonitor.Master.Service.DataProviders
 {
     public class CpuDataProvider
     {
@@ -18,7 +18,7 @@ namespace FoxSky.DeviceLoadMonitor.Master.Service
             _cpuCounter.NextValue().ToString();
 
             // Wait a second to get a valid reading
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(1000);
 
             return MathF.Round(_cpuCounter.NextValue(), 0).ToString();
         }
