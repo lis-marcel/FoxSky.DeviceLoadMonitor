@@ -1,4 +1,4 @@
-﻿using FoxSky.DeviceLoadMonitor.Master.Service;
+﻿using FoxSky.DeviceLoadMonitor.Master.Services;
 using System.Threading.Tasks;
 
 namespace FoxSky.DeviceLoadMonitor.Master

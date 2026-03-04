@@ -1,9 +1,8 @@
-﻿using System.Diagnostics;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 #pragma warning disable CA1416 // Validate platform compatibility
 
-namespace FoxSky.DeviceLoadMonitor.Master.Service.DataProviders
+namespace FoxSky.DeviceLoadMonitor.Master.Services.DataProviders
 {
     public class RamDataProvider
     {
@@ -23,7 +22,7 @@ namespace FoxSky.DeviceLoadMonitor.Master.Service.DataProviders
 
             public MEMORYSTATUSEX()
             {
-                this.dwLength = (uint)Marshal.SizeOf(typeof(MEMORYSTATUSEX));
+                dwLength = (uint)Marshal.SizeOf(typeof(MEMORYSTATUSEX));
             }
         }
 

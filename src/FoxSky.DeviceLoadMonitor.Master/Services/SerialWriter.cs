@@ -1,7 +1,6 @@
 ﻿using System.IO.Ports;
-using System.Reflection;
 
-namespace FoxSky.DeviceLoadMonitor.Master.Service
+namespace FoxSky.DeviceLoadMonitor.Master.Services
 {
     internal class SerialWriter
     {
